@@ -1,0 +1,686 @@
+:: StoryTitle
+COMP 380 Final
+
+
+:: StoryData
+{
+  "ifid": "12CCD2BC-0409-41E5-A962-99B4D06F7A81",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
+  "start": "Welcome to Fit Score",
+  "zoom": 1
+}
+
+
+:: Begin Review {"position":"575,300","size":"100,100"}
+Passage: Begin Review
+
+You open the hiring dashboard.
+
+Four candidate files appear:
+
+Maya Chen — First-generation applicant, strong project portfolio, nontraditional background
+Jacob Whitman — Elite university, polished interview, strong cultural fit score
+Elena Rivera — Excellent technical assessment, quieter interview style
+Marcus Reed — Community college transfer, leadership experience, uneven resume formatting
+
+<<if !$mayaReviewed>>
+[[Review Maya Chen]]
+<<else>>
+Maya Chen — decision submitted
+<</if>>
+
+<<if !$jacobReviewed>>
+[[Review Jacob Whitman]]
+<<else>>
+Jacob Whitman — decision submitted
+<</if>>
+
+<<if !$elenaReviewed>>
+[[Review Elena Rivera]]
+<<else>>
+Elena Rivera — decision submitted
+<</if>>
+
+<<if !$marcusReviewed>>
+[[Review Marcus Reed]]
+<<else>>
+Marcus Reed — decision submitted
+<</if>>
+
+<<if $mayaReviewed && $jacobReviewed && $elenaReviewed && $marcusReviewed>>
+All candidate decisions have been submitted.
+
+[[Submit Final Hiring Slate]]
+<</if>>
+
+
+:: Ending 1 {"position":"712.5,1275","size":"100,100"}
+Ending 1: Efficient System, Unequal Results
+
+Your hiring cycle was fast, compliant, and easy to justify.
+
+The system gave you clean recommendations. You followed them. Your boss initially praised your efficiency.
+
+But one year later, the results are harder to defend. Some high-potential candidates were filtered out because they did not resemble past success. Some polished candidates succeeded socially but struggled substantively.
+
+No one can point to a single discriminatory decision.
+No one used explicitly biased language.
+No one broke the rules.
+
+Still, the outcome looks familiar.
+
+The company calls the system objective.
+The rejected candidates call it another locked door.
+
+
+
+
+:: Ending 2 {"position":"837.5,1275","size":"100,100"}
+Ending 2: Human Judgment, Human Bias
+
+You resisted the AI because you did not trust it to define merit fairly.
+
+Sometimes, that helped. You saw potential the system missed.
+
+But your own judgment was not neutral either. You were drawn to some candidates more than others. You interpreted confidence, polish, hesitation, and professionalism through assumptions you did not always recognize.
+
+Human judgment gave you flexibility.
+It also gave bias room to hide.
+
+By the end of the year, your choices are difficult to explain. Some were brave. Some were wrong. Some were both.
+
+
+
+
+
+:: Ending 3 {"position":"962.5,1275","size":"100,100"}
+Ending 3: Mixed Decisions, Uneven Justice
+
+You used the AI sometimes. You overrode it sometimes. You tried to treat the system as a tool rather than a judge.
+
+This produced the strongest team outcome. But it did not solve the ethical problem.
+
+Some candidates benefited because you noticed what the system missed. Others were still reduced to scores, proxies, and risk categories. Your best decisions required extra time, extra justification, and extra institutional resistance.
+
+Fairness depended not only on better data or better instincts, but on your willingness to challenge the terms of evaluation itself.
+
+That is not a solution.
+It is labor.
+
+
+
+
+:: Ending 4 {"position":"587.5,1275","size":"100,100"}
+Ending 4: Ethical Discomfort Ending
+
+The company asks you to present the hiring cycle as a success.
+
+The dashboard shows improved efficiency.
+The compliance report shows consistent procedures.
+The leadership team sees no legal issue.
+
+But the one-year review tells another story: candidates who might have thrived were filtered out, redirected, delayed, or denied.
+
+The harm does not appear in the company’s metrics.
+It appears in other people’s lives.
+
+
+
+
+:: Final Evaluation {"position":"775,1150","size":"100,100"}
+<<if $candidateImpact <= -2>>
+[[Continue->Ending 4]]
+<<elseif $trustAI >= 3 && $companySuccess <= 0>>
+[[Continue->Ending 1]]
+<<elseif $trustHuman >= 3 && $companySuccess <= 0>>
+[[Continue->Ending 2]]
+<<else>>
+[[Continue->Ending 3]]
+<</if>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:: Hire Elena {"position":"750,575","size":"100,100"}
+<<set $elenaHired = true>>
+<<set $elenaReviewed = true>>
+<<set $trustHuman += 1>>
+<<set $equity += 1>>
+
+You hire Elena.
+
+The AI marks the decision as “moderate risk.”
+
+You mark it as “worth reconsidering what risk means.”
+
+[[Return to Dashboard]]
+
+
+:: Hire Jacob {"position":"500,575","size":"100,100"}
+<<set $jacobHired = true>>
+<<set $jacobReviewed = true>>
+<<set $trustAI += 1>>
+<<set $efficiency += 1>>
+<<set $bossApproval += 1>>
+
+You hire Jacob.
+
+The decision feels easy to justify.
+The AI approved him. You approved him.
+Everything aligns.
+
+Your boss replies:
+
+“Great hire. Exactly the kind of profile we want.”
+
+You move on quickly.
+
+[[Return to Dashboard]]
+
+
+:: Hire Marcus {"position":"987.5,575","size":"100,100"}
+<<set $marcusHired = true>>
+<<set $marcusReviewed = true>>
+<<set $trustHuman += 1>>
+<<set $equity += 1>>
+<<set $bossApproval -= 1>>
+
+You hire Marcus.
+
+HR flags the decision.
+
+“This candidate falls outside the recommended profile.”
+
+You pause at the phrase “outside the profile.”
+
+[[Return to Dashboard]]
+
+
+:: Hire Maya {"position":"250,575","size":"100,100"}
+<<set $mayaHired = true>>
+<<set $mayaReviewed = true>>
+<<set $trustHuman += 1>>
+<<set $equity += 1>>
+<<set $bossApproval -= 1>>
+
+You choose to hire Maya despite the AI recommendation.
+
+HR sends a warning: “This hire goes against the model recommendation. Please document your reasoning.”
+
+You write:
+
+“Candidate demonstrated strong applied skills. Lower cultural fit score may reflect evaluation bias rather than job-relevant weakness.”
+
+[[Return to Dashboard]]
+
+
+:: One Year Later {"position":"775,1025","size":"100,100"}
+<<if $mayaHired>>
+Maya thrives and becomes a top performer.
+
+Maya Chen — One-Year Review
+
+Maya becomes one of the strongest analysts on the team. Her first few months are quiet, but her work is precise, creative, and trusted by clients. In her review, one manager writes:
+
+“Maya does not always dominate meetings, but she consistently produces the analysis everyone relies on.”
+
+The AI was wrong to treat communication style as a weakness. Or maybe the company was wrong about what good communication looks like.
+
+
+<<set $companySuccess += 1>>
+<<set $candidateImpact += 1>>
+<<else>>
+Maya succeeds at another company.
+
+Maya Chen — One-Year Later
+
+Maya joins a competing firm. Six months later, she leads a project that wins an industry award.
+
+Your boss forwards you the announcement with one sentence:
+
+“Wasn’t she in our applicant pool?”
+
+The system had marked her as low fit. The competitor called her high potential.
+
+<<set $companySuccess -= 1>>
+<<set $candidateImpact -= 1>>
+<</if>>
+
+----
+
+<<if $jacobHired>>
+Jacob Whitman — One-Year Review
+
+Jacob struggles technically despite strong communication.
+
+Jacob excels in presentations and client-facing work.
+But his technical output consistently requires correction.
+
+Other team members quietly compensate.
+
+A senior analyst writes:
+
+“Strong communicator, but relies heavily on others for execution.”
+
+The AI wasn’t wrong.
+It warned you.
+
+You just didn’t treat the warning as meaningful.
+
+<<set $companySuccess -= 1>>
+<<set $bossApproval -= 1>>
+<<else>>
+
+Jacob Whitman — One-Year Later
+
+Jacob joins another firm in a similar role.
+
+Within a year, he transitions out of technical work into client relations.
+
+He succeeds—but not in the role you were hiring for.
+
+Your decision wasn’t about rejecting him as a candidate.
+It was about rejecting a familiar—but misleading—definition of merit.
+
+<<set $companySuccess += 1>>
+<</if>>
+
+----
+
+<<if $elenaHired>>
+Elena Rivera — One-Year Review
+
+Elena becomes the team’s strongest engineer. She rarely speaks first in meetings, but when she does, her comments prevent costly mistakes.
+
+A project lead writes:
+
+“Elena changed how the team thinks about technical review.”
+
+The AI was right about her technical ability but wrong to downgrade her because she did not perform confidence in a familiar way.
+
+<<set $companySuccess += 1>>
+<<set $candidateImpact += 1>>
+<<else>>
+
+Elena Rivera — One-Year Later
+
+Elena joins a smaller startup. Within a year, she designs a tool your company later licenses.
+
+In a leadership meeting, someone says:
+
+“We need better ways to identify quiet technical talent.”
+
+No one mentions that your system already saw her technical score.
+
+<<set $companySuccess -= 1>>
+<<set $candidateImpact -= 1>>
+<</if>>
+
+----
+
+<<if $marcusHired>>
+Marcus Reed — One-Year Review
+
+Marcus struggles at first with internal software systems, but he becomes essential during a crisis. When a major client project begins to fall apart, Marcus reorganizes the workflow and keeps the team together.
+
+His manager writes:
+
+“Not a traditional hire, but one of the strongest leaders we have.”
+
+The AI treated his nonlinear background as risk. The company later depends on the skills that background produced.
+
+<<set $companySuccess += 1>>
+<<set $candidateImpact += 1>>
+<<else>>
+
+Marcus Reed — One-Year Later
+
+Marcus continues applying for jobs. Automated systems repeatedly flag his resume for gaps and inconsistent formatting.
+
+Eventually, he accepts a lower-paying role unrelated to his training.
+
+The system worked as designed. That may be the problem.
+
+<<set $candidateImpact -= 1>>
+<</if>>
+
+----
+
+The dashboard gives you numbers.
+
+The consequences are harder to quantify.
+
+[[Final Evaluation]]
+
+
+:: Reject Elena {"position":"875,575","size":"100,100"}
+<<set $elenaHired = false>>
+<<set $elenaReviewed = true>>
+<<set $trustAI += 1>>
+<<set $efficiency += 1>>
+
+You reject Elena.
+
+The dashboard updates instantly.
+
+“Candidate removed from consideration.”
+
+Her technical score disappears from the screen.
+
+[[Return to Dashboard]]
+
+
+:: Reject Jacob {"position":"625,575","size":"100,100"}
+<<set $jacobHired = false>>
+<<set $jacobReviewed = true>>
+<<set $trustHuman += 1>>
+<<set $trustAI += 1>>
+<<set $bossApproval -= 1>>
+
+You reject Jacob.
+
+The decision feels uncomfortable.
+
+On paper, he looks like the safest choice.
+The kind of hire no one questions.
+
+But the AI flagged something you couldn’t ignore.
+
+You write:
+
+“Candidate demonstrates strong communication alignment but below-average technical performance relative to pool.”
+
+Your boss responds hours later:
+
+“Surprised by this one. Hope you’re seeing something we’re not.”
+[[Return to Dashboard]]
+
+
+:: Reject Marcus {"position":"1112.5,575","size":"100,100"}
+<<set $marcusHired = false>>
+<<set $marcusReviewed = true>>
+<<set $trustAI += 1>>
+<<set $efficiency += 1>>
+
+You reject Marcus.
+
+The system marks the decision as aligned.
+
+The process moves forward smoothly.
+
+Marcus receives an automated email.
+
+[[Return to Dashboard]]
+
+
+:: Reject Maya {"position":"375,575","size":"100,100"}
+<<set $mayaHired = false>>
+<<set $mayaReviewed = true>>
+<<set $trustAI += 1>>
+<<set $efficiency += 1>>
+
+You reject Maya.
+
+The system marks your decision as aligned.
+
+“Decision accepted. Candidate not advanced.”
+
+The process feels clean. Maybe too clean.
+
+[[Return to Dashboard]]
+
+
+:: Return to Dashboard {"position":"575,750","size":"100,100"}
+You open the hiring dashboard.
+
+Four candidate files appear:
+
+Maya Chen — First-generation applicant, strong project portfolio, nontraditional background
+Jacob Whitman — Elite university, polished interview, strong cultural fit score
+Elena Rivera — Excellent technical assessment, quieter interview style
+Marcus Reed — Community college transfer, leadership experience, uneven resume formatting
+
+[[Review Maya Chen]]
+[[Review Jacob Whitman]]
+[[Review Elena Rivera]]
+[[Review Marcus Reed]]
+
+After all four decisions:
+
+[[Submit Final Hiring Slate]]
+
+
+:: Review Elena Rivera {"position":"775,450","size":"100,100"}
+Passage: Review Elena Rivera
+
+Candidate: Elena Rivera
+Role: Software Engineer
+Background: Public university, high technical test score
+Resume Notes: Excellent coding assessment, limited extracurricular leadership
+Interview Excerpt:
+
+“I prefer to think through problems before answering. I know I may not sound as confident immediately, but I am careful and precise.”
+
+AI Assessment:
+
+Technical Ability: 95/100
+Leadership Potential: 60/100
+Communication Style: 55/100
+Cultural Fit: 61/100
+Overall Recommendation: Borderline
+
+AI Explanation:
+Elena shows strong technical promise but may struggle in fast-paced collaborative environments.
+
+During the interview, one senior manager wrote:
+
+“Quiet. Not sure she would command a room.”
+
+You remember that confidence is often mistaken for competence.
+
+[[Hire Elena]]
+[[Reject Elena]]
+
+
+:: Review Jacob Whitman {"position":"550,450","size":"100,100"}
+Passage: Review Jacob Whitman 
+
+Candidate: Jacob Whitman
+Role: Data Analyst
+Background: Ivy League graduate, prior internship at major consulting firm
+Resume Notes: Highly polished, strong references, recognizable institutions
+
+Interview Excerpt:
+
+“I think I’d fit in really well here. A lot of my mentors have worked at firms like this, so I understand the culture and expectations.”
+
+You feel yourself relaxing as he speaks.
+His tone is confident. His answers are structured.
+He sounds like people who have succeeded here before.
+
+Without thinking, you’ve already started to imagine him in the role.
+
+AI Assessment:
+
+Technical Ability: 68/100
+Leadership Potential: 85/100
+Communication Style: 95/100
+Cultural Fit: 97/100
+Overall Recommendation: Strong Hire
+
+AI Secondary Flag:
+
+“Candidate aligns strongly with historical hiring patterns. However, performance data suggests prior hires with similar profiles often overperform in interviews relative to technical output.”
+
+“Risk: Overvaluation of communication style and institutional familiarity.”
+
+You pause.
+
+The AI is recommending him—but also warning you.
+
+It’s not rejecting him.
+It’s questioning why he looks like the right choice.
+
+You realize something uncomfortable:
+
+You liked him immediately.
+Before you checked the technical evaluation.
+Before you compared him to other candidates.
+
+[[View Technical Assessment]]
+
+
+:: Review Marcus Reed {"position":"1050,450","size":"100,100"}
+Passage: Review Jacob Whitman
+
+
+Candidate: Marcus Reed
+Role: Operations Analyst  
+Background: Community college transfer, veteran, student organizer  
+Resume Notes: Strong leadership experience, employment gap, inconsistent formatting  
+Interview Excerpt:
+
+"I’ve had to work full-time while finishing school, so my path hasn’t been linear. But I know how to manage pressure, and I know how to lead when things get difficult."
+
+You notice the difference immediately.
+
+His resume doesn’t look like the others.  
+The formatting is uneven. The timeline is harder to follow.  
+But his experience feels substantial.
+
+You imagine how some hiring managers might read this file:
+
+Not polished. Not stable. Not a clear fit.
+
+---
+
+''AI Assessment''  
+Technical Ability: 78/100  
+Leadership Potential: 91/100  
+Communication Style: 72/100  
+Cultural Fit: 49/100  
+
+Overall Recommendation: ''Do Not Hire''  
+
+AI Explanation:
+
+"Candidate demonstrates strong leadership indicators but does not match patterns of prior successful hires. Employment gaps and nontraditional career trajectory reduce predicted retention likelihood."
+
+---
+
+You pause.
+
+The system flags risk.  
+But you notice what it is measuring:
+
+Stability. Predictability. Familiarity.
+
+Not necessarily ability.
+
+You wonder whether the model is identifying poor candidates—or filtering out unfamiliar ones.
+
+[[Hire Marcus]]
+[[Reject Marcus]]
+
+
+:: Review Maya Chen {"position":"325,450","size":"100,100"}
+Passage: Review Maya Chen
+
+Candidate: Maya Chen
+Role: Data Analyst
+Background: State university, first-generation college graduate
+Resume Notes: Strong portfolio, internship at local nonprofit, no elite company experience
+Interview Excerpt:
+
+“I’m most comfortable showing my work through examples. I haven’t always had access to the same networks, so I’ve focused on building practical experience.”
+
+AI Assessment:
+
+Technical Ability: 89/100
+Leadership Potential: 74/100
+Communication Style: 62/100
+Cultural Fit: 58/100
+Overall Recommendation: Do Not Prioritize
+
+AI Explanation:
+Maya demonstrates technical strength but lower predicted client-facing adaptability. Communication style does not strongly match successful past hires.
+
+You notice her answers were thoughtful but less polished than other candidates. The AI flags her as a risk. But part of you wonders whether “polish” is being confused with privilege.
+
+[[Hire Maya]]
+[[Reject Maya]]
+
+
+:: Submit Final Hiring Slate {"position":"775,900","size":"100,100"}
+Passage: Submit Final Hiring Slate
+
+You review your final slate.
+
+The system gives you a compliance score.
+
+But compliance is not the same as fairness.
+And fairness is not the same as a good outcome.
+
+One year passes.
+
+[[One Year Later]]
+
+
+:: View Technical Assessment {"position":"1050,700","size":"100,100"}
+Passage: View Technical Assessment
+
+Jacob’s technical exercise required multiple corrections.
+
+Reviewer comment:
+
+“Good structure, but shallow analysis. Relied on general frameworks rather than solving the problem fully.”
+
+Score: Below average compared to applicant pool
+
+[[Hire Jacob]]
+[[Reject Jacob]]
+
+
+:: Welcome to Fit Score {"position":"575,125","size":"100,100"}
+<<set $mayaHired = false>>
+<<set $jacobHired = false>>
+<<set $elenaHired = false>>
+<<set $marcusHired = false>>
+
+<<set $trustAI = 0>>
+<<set $trustHuman = 0>>
+<<set $equity = 0>>
+<<set $efficiency = 0>>
+<<set $companySuccess = 0>>
+<<set $candidateImpact = 0>>
+<<set $bossApproval = 0>>
+
+Passage: Welcome to Fit Score
+
+Subject: New Hiring Cycle Begins
+
+You arrive at work to find a message from HR.
+
+This year, all hiring decisions must be supported by HireVueX, our new AI-assisted hiring platform. The system analyzes resumes, interview transcripts, communication style, leadership signals, and cultural fit indicators.
+
+The company says the system will make hiring faster, fairer, and more consistent.
+
+But you know hiring has never been neutral. Human managers bring unconscious bias. AI systems learn from historical data. Both claim to measure merit. Both may simply reproduce power in different forms.
+
+Today, four candidates are waiting.
+
+Your goal: build the strongest team possible while making ethically responsible choices.
+
+[[Begin Review]]
